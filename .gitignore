@@ -3,8 +3,10 @@ node_modules/
 jspm_packages/
 
 # Coverage directory used by tools like istanbul
-test/
 coverage/
+
+# DEMO
+demo/
 
 # Output of 'npm pack'
 *.tgz
