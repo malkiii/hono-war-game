@@ -1,0 +1,25 @@
+{
+  "name": "express-war-game",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js --watch .",
+    "deploy": "vercel --prod"
+  },
+  "author": "Malki Abdurrahman",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/malkiii/express-war-game.git"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@vercel/kv": "^0.2.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.1.4",
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22",
+    "prettier": "^2.8.8"
+  }
+}
