@@ -15,7 +15,7 @@ class Player {
     const rangeSize = 26 / deckSizes.length;
     let currentRange = Math.floor(this.pile.length / rangeSize);
 
-    if (currentRange == 0) return 'cards/back.png';
+    if (currentRange == 0) return 'cards/BACK.png';
     if (currentRange >= deckSizes.length) currentRange = deckSizes.length - 1;
 
     return `cards/deck-${deckSizes[currentRange]}${reverse ? '-rev' : ''}.png`;
