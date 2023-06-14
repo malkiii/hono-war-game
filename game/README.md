@@ -16,6 +16,6 @@ a card war game built using `express` and Node.js, there is two players `player1
 
 ## License
 
-Distributed under the [MIT](https://github.com/malkiii/express-war-game/blob/main/LICENSE) license.
+Distributed under the [MIT](https://github.com/malkiii/express-war-game/blob/master/LICENSE) license.
 
 <a href="https://github.com/malkiii/express-war-game"><img alt="Powered by Vercel" src="https://raw.githubusercontent.com/abumalick/powered-by-vercel/master/powered-by-vercel.svg" width=170 /></a>
