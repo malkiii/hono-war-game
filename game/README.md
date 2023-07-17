@@ -18,4 +18,4 @@ a card war game built using `express` and Node.js, there is two players `player1
 
 Distributed under the [MIT](https://github.com/malkiii/express-war-game/blob/master/LICENSE) license.
 
-<a href="https://vercel.com/new/git/external?repository-url=https%3A%2F%2Fgithub.com%2Fdatejer%2Fvercel-badge%2Ftree%2Fmaster"><img alt="Powered by Vercel" src="https://vercel.com/button" /></a>
+<a href="https://vercel.com/new/git/external?repository-url=https%3A%2F%2Fgithub.com%2Fmalkiii%2Fexpress-war-game"><img alt="Powered by Vercel" src="https://vercel.com/button" /></a>
