@@ -69,7 +69,7 @@ const imageRouter = async (req, res) => {
       break;
 
     case 'score':
-      const color = GAME.winner() === player ? '0f0' : 'ff5603';
+      const color = GAME.winner() === player ? '0f0' : 'f03a17';
       const score = currentPlayer.score;
       sendScorePlaceholder(res, color, score);
       break;
