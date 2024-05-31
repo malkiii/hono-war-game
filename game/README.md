@@ -11,7 +11,7 @@ a card war game built using `express` and Node.js, there is two players `player1
 
 | Routes                    | Description                                                                |
 | ------------------------- | -------------------------------------------------------------------------- |
-| `/play?callback=<URL>`    | Play the next game (draw a card).                                          |
+| `/play`                   | Play the next game (draw a card).                                          |
 | `/player/[1 or 2]/:image` | get the current player **image** which can be `card` or `pile` or `score`. |
 
 ## License

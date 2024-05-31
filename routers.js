@@ -80,11 +80,10 @@ const imageRouter = async (req, res) => {
   }
 };
 
+const callbackUrl = 'https://github.com/malkiii';
+
 // handle play request
 const playRouter = async (req, res) => {
-  const { callback } = req.query;
-  if (!callback) return res.send('Callback URL is not defined!');
-
   const GAME = await getCurrentGame();
 
   if (GAME.isGameOver()) GAME.initialGame();
@@ -92,7 +91,7 @@ const playRouter = async (req, res) => {
 
   await setCurrentGame(GAME.getCurrentGame());
 
-  res.redirect(callback);
+  res.redirect(callbackUrl);
 };
 
 async function inisializeGame() {
