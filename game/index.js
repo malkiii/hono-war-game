@@ -24,6 +24,10 @@ class Player {
 
 class CardWar {
   constructor() {
+    this.initialGame();
+  }
+
+  initialGame() {
     const deck = cards.generateDeck();
 
     this.drawPile = [[], []];
