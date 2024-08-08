@@ -23,21 +23,7 @@ class Player {
 }
 
 class CardWar {
-  constructor(game) {
-    this.drawPile = [
-      cards.getCardArray(game.dp0),
-      cards.getCardArray(game.dp1)
-    ];
-
-    this.player1 = new Player(game.player1);
-    this.player2 = new Player(game.player2);
-
-    this.playedCards = cards.getCardArray(game.last_cards);
-
-    this.isWar = game.is_war;
-  }
-
-  initialGame() {
+  constructor() {
     const deck = cards.generateDeck();
 
     this.drawPile = [[], []];
@@ -52,6 +38,20 @@ class CardWar {
 
     this.playedCards = [];
     this.isWar = false;
+  }
+
+  use(game) {
+    this.drawPile = [
+      cards.getCardArray(game.dp0),
+      cards.getCardArray(game.dp1)
+    ];
+
+    this.player1 = new Player(game.player1);
+    this.player2 = new Player(game.player2);
+
+    this.playedCards = cards.getCardArray(game.last_cards);
+
+    this.isWar = game.is_war;
   }
 
   isGameOver() {

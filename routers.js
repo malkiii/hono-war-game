@@ -1,20 +1,29 @@
-const kv = require('@vercel/kv').kv;
+const { Redis } = require('@upstash/redis');
 const dotenv = require('dotenv');
 const CardWar = require('./game/index.js');
 const fs = require('fs');
 
 dotenv.config();
 
+const redis = new Redis({
+  url: process.env.UPSTASH_REDIS_REST_URL,
+  token: process.env.UPSTASH_REDIS_REST_TOKEN
+});
+
+const callbackUrl = 'https://github.com/malkiii';
+
+const GAME = new CardWar();
+
 function getImagePath(pathname) {
   return `${__dirname}/public/${pathname}`;
 }
 
 async function getCurrentGame() {
-  return new CardWar(await kv.get('game'));
+  return await redis.get('game');
 }
 
 async function setCurrentGame(game) {
-  await kv.set('game', JSON.stringify(game));
+  await redis.set('game', JSON.stringify(game));
 }
 
 function sendImageData(res, imagePath, type) {
@@ -54,7 +63,8 @@ const imageRouter = async (req, res) => {
   const { player, route } = req.params;
   if (player !== '1' && player !== '2') return res.status(404);
 
-  const GAME = await getCurrentGame();
+  // const GAME = await getCurrentGame();
+  GAME.use(await getCurrentGame());
   const currentPlayer = GAME['player' + player];
 
   switch (route) {
@@ -80,11 +90,10 @@ const imageRouter = async (req, res) => {
   }
 };
 
-const callbackUrl = 'https://github.com/malkiii';
-
 // handle play request
 const playRouter = async (req, res) => {
-  const GAME = await getCurrentGame();
+  // const GAME = await getCurrentGame();
+  GAME.use(await getCurrentGame());
 
   if (GAME.isGameOver()) GAME.initialGame();
   GAME.play();
@@ -95,9 +104,10 @@ const playRouter = async (req, res) => {
 };
 
 async function inisializeGame() {
-  const GAME = await getCurrentGame();
-  GAME.initialGame();
-  GAME.play();
+  const game = await getCurrentGame();
+  if (game) return GAME.use(game);
+
+  game.play();
   await setCurrentGame(GAME.getCurrentGame());
 }
 
