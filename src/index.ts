@@ -8,7 +8,7 @@ interface Env {
 
 const app = new Hono<{ Bindings: Env }>();
 
-app.get('/', (c) => c.text('GET /'));
+app.get('/', (c) => c.text('GET /play to play the game.'));
 
 app.get('/player/:player/:route', async (c) => {
   const { player, route } = c.req.param();
