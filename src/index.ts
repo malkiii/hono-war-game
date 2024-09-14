@@ -1,4 +1,5 @@
 import { Hono, type Context } from 'hono';
+import { cache } from 'hono/cache';
 import WarGame from './game';
 
 interface Env {
@@ -9,6 +10,9 @@ interface Env {
 const app = new Hono<{ Bindings: Env }>();
 
 app.get('/', (c) => c.text('GET /play to play the game.'));
+
+// disable cache for all routes
+app.get('*', cache({ cacheName: 'war', cacheControl: 'max-age=0' }));
 
 app.get('/player/:player/:route', async (c) => {
   const { player, route } = c.req.param();
