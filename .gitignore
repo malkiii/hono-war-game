@@ -1,29 +1,31 @@
-# Dependency directories
+# prod
+dist/
+
+# dev
+.yarn/
+!.yarn/releases
+.vscode/*
+!.vscode/launch.json
+!.vscode/*.code-snippets
+.idea/
+
+# deps
 node_modules/
-jspm_packages/
+.wrangler
 
-# Coverage directory used by tools like istanbul
-coverage/
-
-# DEMO
-demo/
-
-# Output of 'npm pack'
-*.tgz
-
-# Yarn Integrity file
-.yarn-integrity
-
-# dotenv environment variables file
+# env
 .env
+.env.production
+.dev.vars
 
-# Serverless directories
-.serverless
-.vercel
-
-# Logs
-logs
+# logs
+logs/
 *.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# misc
+.DS_Store
