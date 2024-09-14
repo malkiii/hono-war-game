@@ -1,1 +1,1 @@
-src/README.md
+game/README.md
