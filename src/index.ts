@@ -13,13 +13,6 @@ const app = new Hono<{ Bindings: Env }>();
 
 app.get('/', (c) => c.text('GET /play to play the game.'));
 
-const fetchRequestInit: RequestInit = {
-  cf: { cacheTtl: -1 },
-};
-
-// disable cache for all routes
-app.get('*', cache({ cacheName: 'game', cacheControl: 'max-age=0' }));
-
 app.get('/player/:player/:route', async (c) => {
   const { player, route } = c.req.param();
   if (player !== '1' && player !== '2') return c.status(404);
@@ -80,7 +73,7 @@ async function setCurrentGame(kv: Redis, game: WarGame) {
 }
 
 async function sendImageData(ctx: Context, imagePath: string, type: 'png' | 'jpg') {
-  const response = await fetch(getImageURL(imagePath), fetchRequestInit);
+  const response = await fetch(getImageURL(imagePath));
   if (!response.ok) {
     return ctx.text('Error reading image file.', 500);
   }
@@ -96,7 +89,6 @@ async function sendScorePlaceholder(ctx: Context, textColor: string, score: numb
   try {
     const response = await fetch(
       `https://placehold.co/50x50/0000/${textColor}?text=${score}&font=Open%20Sans`,
-      fetchRequestInit,
     );
 
     if (!response.ok) {
