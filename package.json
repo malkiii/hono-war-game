@@ -1,25 +1,16 @@
 {
-  "name": "express-war-game",
-  "main": "index.js",
-  "license": "MIT",
+  "private": true,
   "scripts": {
-    "dev": "nodemon index.js --watch .",
-    "start": "nodemon index.js",
-    "deploy": "vercel --prod"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/malkiii/express-war-game.git"
+    "dev": "wrangler dev src/index.ts",
+    "deploy": "wrangler deploy --minify src/index.ts"
   },
   "dependencies": {
     "@upstash/redis": "^1.34.0",
-    "cors": "^2.8.5",
-    "dotenv": "^16.1.4",
-    "express": "^4.18.2"
+    "hono": "^4.6.1"
   },
   "devDependencies": {
-    "nodemon": "^2.0.22",
-    "prettier": "^2.8.8",
-    "vercel": "^34.1.0"
+    "@cloudflare/workers-types": "^4.20240529.0",
+    "@types/node": "^22.5.5",
+    "wrangler": "^3.57.2"
   }
 }
