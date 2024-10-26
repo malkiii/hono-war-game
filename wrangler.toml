@@ -8,7 +8,7 @@ compatibility_flags = [ "nodejs_compat" ]
 
 [vars]
 # CALLBACK_URL = "http://localhost:3000"
-CALLBACK_URL = "https://github.com/malkiii"
+CALLBACK_URL = "https://github.com/malkiii#start-of-content"
 
 # [[r2_buckets]]
 # binding = "MY_BUCKET"
